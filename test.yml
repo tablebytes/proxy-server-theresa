@@ -2,7 +2,7 @@ config:
   target: "http://localhost:3000"
   phases: 
     - duration: 60
-      arrivalRate: 1
+      arrivalRate: 150
   processor: "./my-function.js"
   
 scenarios: 
@@ -10,5 +10,4 @@ scenarios:
     - function: "generateRandomNumber"
     - get: 
         url: "/api/restaurants/{{ id }}/info"
-    - log: "Sent a get request to http://localhost:3000/api/restaurants/{{ id }}/info"
   
