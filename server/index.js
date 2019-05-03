@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 // const morgan = require('morgan');
 const path = require('path');
@@ -21,7 +22,7 @@ const axios3004 = axios.create({
 app.get('/api/restaurants/:id/menus', (req, res) => {
   axios3004.get(`/api/restaurants/${req.params.id}/menus`)
     .then(response => res.send(response.data))
-    .catch(error => res.send(error));
+    .catch(error => res.status(500).send(error));
 });
 
 app.get('/api/restaurants/:id/menus/:menu', (req, res) => {
@@ -33,7 +34,7 @@ app.get('/api/restaurants/:id/menus/:menu', (req, res) => {
 app.get('/api/restaurants/:id/info', (req, res) => {
   axios3003.get(`/api/restaurants/${req.params.id}/info`)
     .then(response => res.send(response.data))
-    .catch(error => res.send(error));
+    .catch(error => res.status(500).send(error));
 });
 
 app.get('/api/restaurants/:id/overview', (req, res) => {
